@@ -1,0 +1,1 @@
+select nume, prenume, substring(cnp,2,6) from elevi 
