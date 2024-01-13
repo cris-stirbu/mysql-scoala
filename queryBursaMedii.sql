@@ -4,7 +4,7 @@ select
  elevPrenume as Prenume,
  elevClasa as clasa,
  media,
- (select media where clasa='7B' limit 3) as bursa
+ rank() over (partition by elevClasa order by media) >round(0.7*(select count(media) group by clasa order by media)) as bursa
  from Medii
  group by id, nume, prenume, media
  order by clasa, media;
